@@ -1,6 +1,7 @@
 package unidad;
 
-public class Soldado extends Unidad {
+public class Soldado extends Unidad implements BebenPosion{
+ 	
 	private int energia;
 
 	public Soldado() {
@@ -13,17 +14,21 @@ public class Soldado extends Unidad {
 	}
 
 	@Override
-	public void atacarA(Unidad esa) {
-		// TODO Auto-generated method stub
-
+	public void mostrarStats() {
+		super.mostrarStatsBasicos();
+		System.out.println("Mi vida energia actual es: " + this.energia);
 	}
 
 	@Override
-	public void mostrarStats() {
-		System.out.println("Mi vida daño actual es: " + this.daño);
-		System.out.println("Mi vida salud actual es: " + this.salud);
-		System.out.println("Mi vida energia actual es: " + this.energia);
-		System.out.println("Mi vida defensa actual es: " + this.defensa); // Podria sacarse REVISAR
+	public void beberPosion() {
+		this.energia = 100;
+	}
+
+
+	@Override
+	public boolean puedoAtacar(Unidad atacado) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

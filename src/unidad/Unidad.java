@@ -7,14 +7,19 @@ import item.Item;
 public abstract class Unidad {
 	protected int daño;
 	protected int salud;
-	protected int energia;
 	protected int defensa;
+
+	protected int energia;
 	protected int posicion;
 	protected List<Item> objetos;
 
-	public abstract void atacarA(Unidad esa);
+	public abstract boolean puedoAtacar(Unidad atacado);
 	public abstract void mostrarStats();
 
+	protected Unidad (){
+		
+	}
+	
 	protected boolean equiparCon(Item item) {
 		if (objetos.size() < 3) {
 			for (Item itemEqui : objetos) {
@@ -49,5 +54,33 @@ public abstract class Unidad {
 		}
 		
 		return true;
+	}
+	
+	protected void moverA(int pos){
+		this.posicion = pos;
+	}
+	
+	protected void mostrarStatsBasicos(){
+		System.out.println("Mi vida daño actual es: " + this.daño);
+		System.out.println("Mi vida salud actual es: " + this.salud);
+		System.out.println("Mi vida defensa actual es: " + this.defensa);
+	}
+	
+	protected boolean estarEnRango(){
+		
+	}
+	
+	protected int getPosicion(){
+		return this.posicion;
+	}
+	
+	protected int getDaño(){
+		return this.daño;
+	}
+	
+	protected void atacarA(Unidad esa){
+		if(this.puedoAtacar(esa)){
+			
+		}
 	}
 }

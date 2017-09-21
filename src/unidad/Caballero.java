@@ -1,8 +1,9 @@
 package unidad;
 
-public class Caballero extends Unidad{
+public class Caballero extends Unidad implements BebenPosion{
+	private static int DISTANCIA_CABALLERO_MIN = 1;
+	private static int DISTANCIA_CABALLERO_MAX = 2;
 	
-	private char caballo; // C = Combate , N = No Combate, esto es por si el caballo esta o no dominado.
 	private int numAtaques;
 	
 	public Caballero(){
@@ -11,22 +12,27 @@ public class Caballero extends Unidad{
 		super.energia = 0;
 		super.defensa = 0;
 		super.posicion = 2;
-		this.caballo = 'C';
 		this.numAtaques = 0;
 	}
-	
-	@Override
-	public void atacarA(Unidad esa) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	
 	@Override
 	public void mostrarStats() {
-		System.out.println("Mi vida daño actual es: " + this.daño);
-		System.out.println("Mi vida salud actual es: " + this.salud);
-		System.out.println("El estado de mi caballo es: " + this.caballo + " con " + this.numAtaques + " Ataques Realizados");
-		System.out.println("Mi vida defensa actual es: " + this.defensa); // Podria sacarse REVISAR
+	
+		super.mostrarStatsBasicos();
+		System.out.println("Mi numero de ataques realizados es: " + this.numAtaques);
+	}
+
+	@Override
+	public void beberPosion() {
+		this.numAtaques = 0;
+	}
+
+
+	@Override
+	public boolean puedoAtacar(Unidad atacado) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 			
 }

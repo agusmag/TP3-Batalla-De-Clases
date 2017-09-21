@@ -1,8 +1,8 @@
 package unidad;
 
 public class Arquero extends Unidad{
-	private static int DISTANCIA_ARQUERO;
-	
+	private static int DISTANCIA_ARQUERO_MIN = 2;
+	private static int DISTANCIA_ARQUERO_MAX = 5;
 	private int flechas;
 	
 	
@@ -16,20 +16,20 @@ public class Arquero extends Unidad{
 		//Falta inicializar el vector con 3 posiciones.
 	}
 	
-	@Override
-	
-	
-	public void atacarA(Unidad esa) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public void mostrarStats() {
-		System.out.println("Mi vida daño actual es: " + this.daño);
-		System.out.println("Mi vida salud actual es: " + this.salud);
-		System.out.println("Mi vida defensa actual es: " + this.defensa); // Podria sacarse REVISAR
+		super.mostrarStatsBasicos();
 		System.out.println("Mi cantidad de flechas actual es: " + this.flechas);
+	}
+
+
+	@Override
+	public boolean puedoAtacar(Unidad atacado) {
+		if(atacado.getPosicion() <= DISTANCIA_ARQUERO_MAX && atacado.getPosicion() >= DISTANCIA_ARQUERO_MIN
+				&& this.flechas > 0)
+			return true;
+		return false;
 	}
 
 	
