@@ -41,9 +41,11 @@ public class BatallasDePrueba
 		Arquero archer = new Arquero(new Vector2(2, 2));
 		Soldado soldier = new Soldado();
 		
-		for(int i = 0; i < 5; i++)
+		for(int i = 0; i < 5; i++) {
 			soldier.atacarA(archer);
+			archer.mostrarStats();
 		
+		}
 		Assert.assertEquals(true, archer.muerta());
 		soldier.atacarA(archer);
 		//archer.mostrarStats();
@@ -63,7 +65,7 @@ public class BatallasDePrueba
 	}
 	
 	@Test
-	public void testEnerg�a ()
+	public void testEnergia ()
 	{
 		Caballero knight = new Caballero(new Vector2(0, 1));
 		Soldado soldier = new Soldado();
@@ -71,7 +73,7 @@ public class BatallasDePrueba
 		for(int i = 0; i < 11; i++)
 			soldier.atacarA(knight);
 		
-		Assert.assertEquals(0, soldier.getEnerg�a());
+		Assert.assertEquals(0, soldier.getEnergia());
 		Assert.assertEquals(100,  knight.getSalud());
 		
 		/*soldier.mostrarStats();

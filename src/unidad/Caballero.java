@@ -26,7 +26,7 @@ public class Caballero extends Unidad implements BebenPoción
 	@Override
 	boolean puedoAtacar(Unidad objetivo)
 	{
-		if(estáEnRango(objetivo) && contadorAtaques < 3)
+		if(estaEnRango(objetivo) && contadorAtaques < 3)
 		{
 			contadorAtaques ++;
 			return true;

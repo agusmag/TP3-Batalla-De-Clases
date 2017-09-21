@@ -18,7 +18,7 @@ public class TestItem {
 		Soldado ryan = new Soldado();
 		Capa capita = new Capa();
 		ryan.equiparCon(capita);
-		Assert.assertEquals(200, ryan.getEnergía());
+		Assert.assertEquals(200, ryan.getEnergia());
 	}
 	
 	@Test
@@ -62,10 +62,10 @@ public class TestItem {
 		Soldado cabo = new Soldado();
 		
 		ryan.atacarA(cabo);
-		Assert.assertEquals(ryan.getEnergía(), 90);
+		Assert.assertEquals(ryan.getEnergia(), 90);
 		
 		ryan.beberPoción();
-		Assert.assertEquals(ryan.getEnergía(), 100);
+		Assert.assertEquals(ryan.getEnergia(), 100);
 	}
 	
 	

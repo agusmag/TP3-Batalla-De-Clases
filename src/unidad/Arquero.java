@@ -52,7 +52,7 @@ public class Arquero extends Unidad
 	@Override
 	boolean puedoAtacar (Unidad objetivo)
 	{
-		if(estáEnRango(objetivo) && this.flechas > 0){
+		if(estaEnRango(objetivo) && this.flechas > 0){
 			this.flechas --;
 			return true;
 		}
