@@ -1,13 +1,10 @@
 package item;
 
-import unidad.Unidad;
+public class Puñal extends Item {
 
-public class Puñal extends Item{
+	protected Puñal(String tipo) {
+		super(tipo);
 
-	@Override
-	void AplicarEfectosA(Unidad clase) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

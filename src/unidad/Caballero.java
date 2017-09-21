@@ -3,6 +3,7 @@ package unidad;
 import item.Item;
 
 public class Caballero extends Unidad{
+	
 	private char Caballo;; // C = Combate , N = No Combate, esto es por si el caballo esta o no dominado.
 
 	public Caballero(){

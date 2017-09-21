@@ -1,10 +1,14 @@
 package item;
 
-import unidad.Unidad;
-
 public abstract class Item {
-	
-	
-	abstract void AplicarEfectosA(Unidad clase);
-}
+	String tipo;
 
+	protected Item(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getName() {
+		return this.tipo;
+	}
+
+}
