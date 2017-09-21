@@ -7,36 +7,42 @@ import item.Item;
 // CLASE PADRE DE LAS UNIDADES
 public abstract class Unidad
 {
-	int salud, daño, defensa, energía;
+	int salud, daï¿½o, defensa, energï¿½a;
 	double distanciaAtaqueMax, distanciaAtaqueMin;
 	Vector2 pos;
 	protected List<Item> objetos;
 
-	abstract void atacar (Unidad objetivo);
+//	abstract void atacar (Unidad objetivo);
 	abstract boolean puedoAtacar (Unidad objetivo);
-	public abstract void mostrarStats();
-
-	public Unidad(int salud, int daño, double distanciaAtaqueMin, double distanciaAtaqueMax, Vector2 pos)
+	
+	public void mostrarStats()
+	{
+		System.out.println("Daï¿½o: " + this.daï¿½o);
+		System.out.println("Salud: " + this.salud);
+		System.out.println("Defensa: " + this.defensa);
+	}
+	
+	public Unidad(int salud, int daï¿½o, double distanciaAtaqueMin, double distanciaAtaqueMax, Vector2 pos)
 	{
 		objetos = new ArrayList<Item>();
 		this.salud = salud;
-		this.daño = daño;
+		this.daï¿½o = daï¿½o;
 		this.distanciaAtaqueMax = distanciaAtaqueMax;
 		this.distanciaAtaqueMin = distanciaAtaqueMin;
 		this.pos = pos;
 
-		// defensa no está en el constructor ya que todas las unidades empiezan
+		// defensa no estï¿½ en el constructor ya que todas las unidades empiezan
 		// con 0 defensa aparentemente
 		// this.defensa = defensa;
 	}
-
-	public boolean equiparCon(Item item)		//equipa con un item
+	
+	public boolean equiparCon(Item item)
 	{
 		if (objetos.size() < 3)
 		{
 			for (Item itemEqui : objetos)		//comprobar si ya lo tenia equipado
 			{
-				if (itemEqui.getName() == item.getName())
+				if (itemEqui.getTipo() == item.getTipo())
 					return false;
 			}
 			objetos.add(item);
@@ -48,15 +54,15 @@ public abstract class Unidad
 
 	protected void actualizarStat(Item item)
 	{
-		switch (item.getName())
+		switch (item.getTipo())
 		{
-		case "capa":
-			this.energía *= 2;
-			this.daño *= 0.9;
+		case "Capa":
+			this.energï¿½a *= 2;
+			this.daï¿½o *= 0.9;
 			break;
-		case "puñal":
+		case "Puï¿½al":
 			this.defensa -= 3;
-			this.daño += 3;
+			this.daï¿½o += 3;
 			break;
 		// EN EL CASO DE ESCUDOS SE AUMENTA LA DEFENSA EN LOS ATAQUES
 		case "escudo":
@@ -65,9 +71,9 @@ public abstract class Unidad
 		}
 	}
 
-	protected boolean infomarEstado()
-	{ // Informa si la Unidad esta viva o muerta; 1 esta VIVA
-		return this.salud != 0;
+	public boolean muerta ()
+	{ // Informa si la Unidad esta viva o muerta.
+		return this.salud <= 0;
 	}
 
 	protected void moverA(Vector2 pos)
@@ -75,14 +81,7 @@ public abstract class Unidad
 		this.pos = pos;
 	}
 
-	protected void mostrarStatsBásicos()
-	{
-		System.out.println("Mi daño actual es: " + this.daño);
-		System.out.println("Mi salud actual es: " + this.salud);
-		System.out.println("Mi defensa actual es: " + this.defensa);
-	}
-
-	boolean estáEnRango(Unidad objetivo)
+	boolean estï¿½EnRango(Unidad objetivo)
 	{
 		double dist = this.pos.distancia(objetivo.pos);
 
@@ -94,37 +93,57 @@ public abstract class Unidad
 		return this.pos;
 	}
 
-	protected int getDaño()
+	public int getDaï¿½o()
 	{
-		return this.daño;
+		return this.daï¿½o;
 	}
 
 	public final void atacarA(Unidad objetivo)
 	{
-		if (puedoAtacar(objetivo))
-			atacar(objetivo);
+		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this))
+			this.daï¿½ar(objetivo);
 	}
 	
-	void dañar (Unidad objetivo)
+	void daï¿½ar (Unidad objetivo)
 	{
-		int dañoRecib = (objetivo.tieneEscudo()) ? (this.daño*objetivo.defensa/100) : this.daño;
-		if (objetivo.salud > dañoRecib) 	
-			objetivo.salud -= dañoRecib;
+		int daï¿½oRecib = (objetivo.tieneEscudo()) ? (this.daï¿½o*objetivo.defensa/100) : this.daï¿½o;
+		if (objetivo.salud > daï¿½oRecib) 	
+			objetivo.salud -= daï¿½oRecib;
 		if (objetivo.salud <0)				// evita tener vida negativa
 			objetivo.salud =0;
 			
 		//se reduce la cantidad del ataque al 40%
-		// si el daño es igual o menor que la defensa directamente no hace nada
-		// el if está porque si pasa eso, va a quedar un núm negativo y le va a subir la vida al objetivo
+		// si el daï¿½o es igual o menor que la defensa directamente no hace nada
+		// el if estï¿½ porque si pasa eso, va a quedar un nï¿½m negativo y le va a subir la vida al objetivo
 	}
 	
-	
-	private boolean tieneEscudo() {
-		for (Item itemEqui : objetos)		//comprobar si ya lo tenia equipado
-		{
-			if (itemEqui.getName() == "Escudo")
-				return true;
-		}
-		return false;
+	public int getSalud()
+	{
+		return salud;
 	}
+	public void setSalud(int salud)
+	{
+		this.salud = salud;
+	}
+	public int getDefensa()
+	{
+		return defensa;
+	}
+	public void setDefensa(int defensa)
+	{
+		this.defensa = defensa;
+	}
+	public int getEnergï¿½a()
+	{
+		return energï¿½a;
+	}
+	public void setEnergï¿½a(int energï¿½a)
+	{
+		this.energï¿½a = energï¿½a;
+	}
+	public void setPos(Vector2 pos)
+	{
+		this.pos = pos;
+	}
+	
 }
