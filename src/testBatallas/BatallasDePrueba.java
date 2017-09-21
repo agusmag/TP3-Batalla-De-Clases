@@ -45,7 +45,7 @@ public class BatallasDePrueba
 		
 		Assert.assertEquals(true, archer.muerta());
 		soldier.atacarA(archer);
-		archer.mostrarStats();
+		//archer.mostrarStats();
 	}
 	
 	@Test

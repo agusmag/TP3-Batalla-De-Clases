@@ -31,7 +31,7 @@ public class Arquero extends Unidad
 	@Override
 	public void mostrarStats()
 	{
-		System.out.println("Caballero:");
+		System.out.println("Arquero:");
 		System.out.println("---------------");
 		super.mostrarStats();
 		System.out.println("Flechas: " + this.flechas);
