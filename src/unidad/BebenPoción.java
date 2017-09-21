@@ -1,5 +1,6 @@
 package unidad;
 
-interface BebenPosion {
-	abstract void beberPosion();
+interface BebenPoción
+{
+	abstract void beberPoción();
 }

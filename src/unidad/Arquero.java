@@ -1,36 +1,41 @@
 package unidad;
 
-public class Arquero extends Unidad{
-	private static int DISTANCIA_ARQUERO_MIN = 2;
-	private static int DISTANCIA_ARQUERO_MAX = 5;
-	private int flechas;
-	
-	
-	public Arquero(){
-		super.daño = 5;
-		super.defensa = 0;
-		super.salud = 50;
-		super.energia = 0;
-		super.posicion = 5;
+public class Arquero extends Unidad
+{
+	private final static int DISTANCIA_ARQUERO_MIN = 2;
+	private final static int DISTANCIA_ARQUERO_MAX = 5;
+	int flechas;
+
+	public Arquero()
+	{
+		super(50, 5, DISTANCIA_ARQUERO_MIN, DISTANCIA_ARQUERO_MAX, new Vector2());
 		this.flechas = 20;
-		//Falta inicializar el vector con 3 posiciones.
 	}
 	
-	
+	public Arquero(Vector2 pos)
+	{
+		super(50, 5, DISTANCIA_ARQUERO_MIN, DISTANCIA_ARQUERO_MAX, pos);
+		this.flechas = 20;
+	}
+
 	@Override
-	public void mostrarStats() {
-		super.mostrarStatsBasicos();
+	public void mostrarStats()
+	{
+		super.mostrarStatsBásicos();
 		System.out.println("Mi cantidad de flechas actual es: " + this.flechas);
 	}
-
-
+	
 	@Override
-	public boolean puedoAtacar(Unidad atacado) {
-		if(atacado.getPosicion() <= DISTANCIA_ARQUERO_MAX && atacado.getPosicion() >= DISTANCIA_ARQUERO_MIN
-				&& this.flechas > 0)
-			return true;
-		return false;
+	void atacar(Unidad objetivo)
+	{
+		dañar(objetivo);
+		this.flechas--;
+	}
+	
+	@Override
+	boolean puedoAtacar (Unidad objetivo)
+	{
+		return estáEnRango(objetivo) && this.flechas > 0;
 	}
 
-	
 }

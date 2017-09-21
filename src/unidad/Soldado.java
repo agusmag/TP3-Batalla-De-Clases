@@ -1,34 +1,43 @@
 package unidad;
 
-public class Soldado extends Unidad implements BebenPosion{
- 	
-	private int energia;
-
-	public Soldado() {
-		super.daño = 10;
-		super.salud = 200;
-		this.energia = 100;
-		super.defensa = 0;
-		super.posicion = 0;
-		// Falta inicializar el vector con 3 posiciones.
+public class Soldado extends Unidad implements BebenPoción
+{
+	public Soldado()
+	{
+		super(200, 10, 0, 1, new Vector2());
+		this.energía = 100;
+	}
+	
+	public Soldado(Vector2 pos)
+	{
+		super(200, 10, 0, 1, pos);
+		this.energía = 100;
 	}
 
 	@Override
-	public void mostrarStats() {
-		super.mostrarStatsBasicos();
-		System.out.println("Mi vida energia actual es: " + this.energia);
+	public void mostrarStats()
+	{
+		super.mostrarStatsBásicos();
+		System.out.println("Mi energia actual es: " + this.energía);
 	}
 
 	@Override
-	public void beberPosion() {
-		this.energia = 100;
+	public void beberPoción()
+	{
+		this.energía = 100;
 	}
 
+	@Override
+	void atacar(Unidad objetivo)
+	{
+		dañar(objetivo);
+		this.energía -= 10;
+	}
 
 	@Override
-	public boolean puedoAtacar(Unidad atacado) {
-		// TODO Auto-generated method stub
-		return false;
+	boolean puedoAtacar(Unidad objetivo)
+	{
+		return estáEnRango(objetivo) && this.energía >= 10;
 	}
 
 }
