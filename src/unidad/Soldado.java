@@ -17,8 +17,11 @@ public class Soldado extends Unidad implements BebenPoción
 	@Override
 	public void mostrarStats()
 	{
-		super.mostrarStatsBásicos();
-		System.out.println("Mi energia actual es: " + this.energía);
+		System.out.println("Soldado:");
+		System.out.println("---------------");
+		super.mostrarStats();
+		System.out.println("Energía: " + this.energía);
+		System.out.println("---------------");
 	}
 
 	@Override
@@ -28,7 +31,7 @@ public class Soldado extends Unidad implements BebenPoción
 	}
 
 	@Override
-	void atacar(Unidad objetivo)
+	public void atacar(Unidad objetivo)
 	{
 		dañar(objetivo);
 		this.energía -= 10;

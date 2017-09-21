@@ -14,8 +14,14 @@ public abstract class Unidad
 
 	abstract void atacar (Unidad objetivo);
 	abstract boolean puedoAtacar (Unidad objetivo);
-	public abstract void mostrarStats();
-
+	
+	public void mostrarStats()
+	{
+		System.out.println("Daño: " + this.daño);
+		System.out.println("Salud: " + this.salud);
+		System.out.println("Defensa: " + this.defensa);
+	}
+	
 	public Unidad(int salud, int daño, double distanciaAtaqueMin, double distanciaAtaqueMax, Vector2 pos)
 	{
 		objetos = new ArrayList<Item>();
@@ -29,7 +35,7 @@ public abstract class Unidad
 		// con 0 defensa aparentemente
 		// this.defensa = defensa;
 	}
-
+	
 	protected boolean equiparCon(Item item)
 	{
 		if (objetos.size() < 3)
@@ -62,7 +68,7 @@ public abstract class Unidad
 		}
 	}
 
-	protected boolean infomarEstado()
+	public boolean muerta ()
 	{ // Informa si la Unidad esta viva o muerta.
 		return this.salud <= 0;
 	}
@@ -70,13 +76,6 @@ public abstract class Unidad
 	protected void moverA(Vector2 pos)
 	{
 		this.pos = pos;
-	}
-
-	protected void mostrarStatsBásicos()
-	{
-		System.out.println("Mi daño actual es: " + this.daño);
-		System.out.println("Mi salud actual es: " + this.salud);
-		System.out.println("Mi defensa actual es: " + this.defensa);
 	}
 
 	boolean estáEnRango(Unidad objetivo)
@@ -96,9 +95,9 @@ public abstract class Unidad
 		return this.daño;
 	}
 
-	final void atacarA(Unidad objetivo)
+	public final void atacarA(Unidad objetivo)
 	{
-		if (puedoAtacar(objetivo))
+		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this))
 			atacar(objetivo);
 	}
 	
@@ -110,4 +109,34 @@ public abstract class Unidad
 		// si el daño es igual o menor que la defensa directamente no hace nada
 		// el if está porque si pasa eso, va a quedar un núm negativo y le va a subir la vida al objetivo
 	}
+	
+	public int getSalud()
+	{
+		return salud;
+	}
+	public void setSalud(int salud)
+	{
+		this.salud = salud;
+	}
+	public int getDefensa()
+	{
+		return defensa;
+	}
+	public void setDefensa(int defensa)
+	{
+		this.defensa = defensa;
+	}
+	public int getEnergía()
+	{
+		return energía;
+	}
+	public void setEnergía(int energía)
+	{
+		this.energía = energía;
+	}
+	public void setPos(Vector2 pos)
+	{
+		this.pos = pos;
+	}
+	
 }

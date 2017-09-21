@@ -18,11 +18,24 @@ public class Arquero extends Unidad
 		this.flechas = 20;
 	}
 
+	public int getFlechas()
+	{
+		return flechas;
+	}
+
+	public void setFlechas(int flechas)
+	{
+		this.flechas = flechas;
+	}
+
 	@Override
 	public void mostrarStats()
 	{
-		super.mostrarStatsBásicos();
-		System.out.println("Mi cantidad de flechas actual es: " + this.flechas);
+		System.out.println("Caballero:");
+		System.out.println("---------------");
+		super.mostrarStats();
+		System.out.println("Flechas: " + this.flechas);
+		System.out.println("---------------");
 	}
 	
 	@Override

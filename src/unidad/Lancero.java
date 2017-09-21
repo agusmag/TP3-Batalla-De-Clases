@@ -30,7 +30,10 @@ public class Lancero extends Unidad
 	@Override
 	public void mostrarStats()
 	{
-		mostrarStatsBásicos();
+		System.out.println("Lancero:");
+		System.out.println("---------------");
+		super.mostrarStats();
+		System.out.println("---------------");
 	}
 
 }
