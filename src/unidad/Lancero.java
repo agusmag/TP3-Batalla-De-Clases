@@ -15,11 +15,11 @@ public class Lancero extends Unidad
 		super(150, 25, DISTANCIA_LANCERO_MIN, DISTANCIA_LANCERO_MAX, pos);
 	}
 
-	@Override
-	void atacar (Unidad objetivo)
-	{
-		dañar(objetivo);
-	}
+//	@Override
+//	void atacar (Unidad objetivo)
+//	{
+//		dañar(objetivo);
+//	}
 	
 	@Override
 	boolean puedoAtacar (Unidad objetivo)
