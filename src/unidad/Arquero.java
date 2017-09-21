@@ -6,6 +6,9 @@ public class Arquero extends Unidad
 	private final static int DISTANCIA_ARQUERO_MAX = 5;
 	int flechas;
 
+	/**
+	 * 
+	 */
 	public Arquero()
 	{
 		super(50, 5, DISTANCIA_ARQUERO_MIN, DISTANCIA_ARQUERO_MAX, new Vector2());
@@ -27,7 +30,7 @@ public class Arquero extends Unidad
 	{
 		this.flechas = flechas;
 	}
-
+	
 	@Override
 	public void mostrarStats()
 	{
@@ -38,17 +41,22 @@ public class Arquero extends Unidad
 		System.out.println("---------------");
 	}
 	
-	@Override
-	void atacar(Unidad objetivo)
-	{
-		dañar(objetivo);
-		this.flechas--;
-	}
+//	@Override
+//	void atacar(Unidad objetivo)
+//	{
+//		dañar(objetivo);
+//		this.flechas--;
+//	}
+//	
 	
 	@Override
 	boolean puedoAtacar (Unidad objetivo)
 	{
-		return estáEnRango(objetivo) && this.flechas > 0;
+		if( estáEnRango(objetivo) && this.flechas > 0){
+			this.flechas --;
+			return true;
+		}
+		return false;
 	}
 
 }

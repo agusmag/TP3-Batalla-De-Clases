@@ -12,7 +12,7 @@ public abstract class Unidad
 	Vector2 pos;
 	protected List<Item> objetos;
 
-	abstract void atacar (Unidad objetivo);
+//	abstract void atacar (Unidad objetivo);
 	abstract boolean puedoAtacar (Unidad objetivo);
 	
 	public void mostrarStats()
@@ -36,13 +36,13 @@ public abstract class Unidad
 		// this.defensa = defensa;
 	}
 	
-	protected boolean equiparCon(Item item)
+	public boolean equiparCon(Item item)
 	{
 		if (objetos.size() < 3)
 		{
 			for (Item itemEqui : objetos)
 			{
-				if (itemEqui.getName() == item.getName())
+				if (itemEqui.getTipo() == item.getTipo())
 					return false;
 			}
 			objetos.add(item);
@@ -54,13 +54,13 @@ public abstract class Unidad
 
 	protected void actualizarStat(Item item)
 	{
-		switch (item.getName())
+		switch (item.getTipo())
 		{
-		case "capa":
+		case "Capa":
 			this.energía *= 2;
 			this.daño *= 0.9;
 			break;
-		case "puñal":
+		case "Puñal":
 			this.defensa -= 3;
 			this.daño += 3;
 			break;
@@ -90,7 +90,7 @@ public abstract class Unidad
 		return this.pos;
 	}
 
-	protected int getDaño()
+	public int getDaño()
 	{
 		return this.daño;
 	}
@@ -98,7 +98,7 @@ public abstract class Unidad
 	public final void atacarA(Unidad objetivo)
 	{
 		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this))
-			atacar(objetivo);
+			this.dañar(objetivo);
 	}
 	
 	void dañar (Unidad objetivo)

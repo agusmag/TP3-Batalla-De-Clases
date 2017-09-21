@@ -16,17 +16,22 @@ public class Caballero extends Unidad implements BebenPoción
 		super(200, 50, DISTANCIA_CABALLERO_MIN, DISTANCIA_CABALLERO_MAX, pos);
 	}
 
-	@Override
-	void atacar(Unidad objetivo)
-	{
-		dañar(objetivo);
-		contadorAtaques++;
-	}
+//	@Override
+//	void atacar(Unidad objetivo)
+//	{
+//		dañar(objetivo);
+//		contadorAtaques++;
+//	}
 
 	@Override
 	boolean puedoAtacar(Unidad objetivo)
 	{
-		return estáEnRango(objetivo) && contadorAtaques < 3;
+		if(estáEnRango(objetivo) && contadorAtaques < 3)
+		{
+			contadorAtaques ++;
+			return true;
+		}
+		return false;
 	}
 
 	@Override

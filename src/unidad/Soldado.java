@@ -30,17 +30,22 @@ public class Soldado extends Unidad implements BebenPoción
 		this.energía = 100;
 	}
 
-	@Override
-	public void atacar(Unidad objetivo)
-	{
-		dañar(objetivo);
-		this.energía -= 10;
-	}
+//	@Override
+//	public void atacar(Unidad objetivo)
+//	{
+//		dañar(objetivo);
+//		this.energía -= 10;
+//	}
 
 	@Override
 	boolean puedoAtacar(Unidad objetivo)
 	{
-		return estáEnRango(objetivo) && this.energía >= 10;
+		if(estáEnRango(objetivo) && this.energía >= 10)
+		{
+			this.energía -= 10;
+			return true;
+		}
+		return false;
 	}
 
 }
