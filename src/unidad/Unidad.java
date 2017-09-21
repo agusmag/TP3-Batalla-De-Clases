@@ -1,7 +1,7 @@
 package unidad;
 
 import item.Item;
-
+#CLASE PADRE DE LAS UNIDADES
 public abstract class Unidad {
 	protected int daño;
 	protected int salud;
