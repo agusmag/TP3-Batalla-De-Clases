@@ -12,15 +12,15 @@ public abstract class Unidad {
 	protected int posicion;
 	protected List<Item> objetos;
 
-	abstract void atacarA(Unidad esa);
+	public abstract void atacarA(Unidad esa);
+	public abstract void mostrarStats();
 
-	boolean equiparCon(Item item) {
+	protected boolean equiparCon(Item item) {
 		if (objetos.size() < 3) {
 			for (Item itemEqui : objetos) {
 				if (itemEqui.getName() == item.getName())
 					return false;
 			}
-
 			objetos.add(item);
 			actualizarStat(item);
 			return true;
@@ -28,7 +28,7 @@ public abstract class Unidad {
 		return false;
 	}
 
-	void actualizarStat(Item item) {
+	protected void actualizarStat(Item item) {
 
 		switch (item.getName()) {
 		case "capa":
@@ -41,5 +41,13 @@ public abstract class Unidad {
 			break;
 		// EN EL CASO DE ESCUDOS SE AUMENTA LA DEFENSA EN LOS ATAQUES
 		}
+	}
+	
+	protected boolean infomarEstado(Unidad esa){ //Informa si la Unidad esta viva o muerta.
+		if (esa.salud == 0){
+			return false;
+		}
+		
+		return true;
 	}
 }

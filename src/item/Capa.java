@@ -2,8 +2,13 @@ package item;
 
 public class Capa extends Item {
 
-	protected Capa(String tipo) {
-		super(tipo);
+	public Capa(){
+		super.tipo = "Capa";
+	}
+	
+	@Override
+	public void descripcion(){
+		System.out.println("Energia x 2 \n -10% Daño");
 	}
 
 }

@@ -2,8 +2,13 @@ package item;
 
 public class Escudo extends Item {
 
-	protected Escudo(String tipo) {
-		super(tipo);
+	public Escudo(){
+		super.tipo = "Escudo";
+	}
+	
+	@Override
+	public void descripcion(){
+		System.out.println("+40% Defensa");
 	}
 
 }

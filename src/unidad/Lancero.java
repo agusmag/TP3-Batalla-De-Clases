@@ -1,26 +1,26 @@
 package unidad;
 
-import item.Item;
-
 public class Lancero extends Unidad{
 
 	public Lancero(){
 		super.daño = 25;
-		super.defensa = 0;
 		super.salud = 150;
-		super.distancia = 3;	
+		super.energia = 0;
+		super.defensa = 0;
+		super.posicion = 3;	
 	}
 	
 	@Override
-	protected void atacarA(Unidad esa) {
+	public void atacarA(Unidad esa) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	void equiparCon(Item objeto) {
-		// TODO Auto-generated method stub
-		
+	public void mostrarStats() {
+		System.out.println("Mi vida daño actual es: " + this.daño);
+		System.out.println("Mi vida salud actual es: " + this.salud);
+		System.out.println("Mi vida defensa actual es: " + this.defensa); // Podria sacarse REVISAR
 	}
 	
 }
