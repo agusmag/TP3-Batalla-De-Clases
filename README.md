@@ -38,11 +38,13 @@ Se deber ́an entregar los siguientes elementos:
 4. Casos de prueba exhaustivos con JUnit
 5. Metricas de desarrollo en Loom
 
-Integrantes:
-*Agustin Magliano (https://github.com/agusmag).
-*Fernando Queirolo (https://github.com/fernandoq96).
-*Santiago Tamashiro (https://github.com/Ta-Ma).
-*Julian Meza (https://github.com/JulianOmar).
+##Integrantes:
 
-Comision:
+* Agustin Magliano ([agusmag](https://github.com/agusmag)).
+* Fernando Queirolo ([fernandoq96](https://github.com/fernandoq96)).
+* Santiago Tamashiro ([Ta-Ma](https://github.com/Ta-Ma)).
+* Julian Meza ([JulianOmar](https://github.com/JulianOmar)).
+
+##Comision:
+
 Lunes y Jueves Turno Mañana (8-12).
