@@ -30,11 +30,11 @@ public abstract class Unidad
 		// this.defensa = defensa;
 	}
 
-	protected boolean equiparCon(Item item)
+	public boolean equiparCon(Item item)		//equipa con un item
 	{
 		if (objetos.size() < 3)
 		{
-			for (Item itemEqui : objetos)
+			for (Item itemEqui : objetos)		//comprobar si ya lo tenia equipado
 			{
 				if (itemEqui.getName() == item.getName())
 					return false;
@@ -59,12 +59,15 @@ public abstract class Unidad
 			this.daño += 3;
 			break;
 		// EN EL CASO DE ESCUDOS SE AUMENTA LA DEFENSA EN LOS ATAQUES
+		case "escudo":
+			this.defensa = 40;
+			break;
 		}
 	}
 
 	protected boolean infomarEstado()
-	{ // Informa si la Unidad esta viva o muerta.
-		return this.salud <= 0;
+	{ // Informa si la Unidad esta viva o muerta; 1 esta VIVA
+		return this.salud != 0;
 	}
 
 	protected void moverA(Vector2 pos)
@@ -96,7 +99,7 @@ public abstract class Unidad
 		return this.daño;
 	}
 
-	final void atacarA(Unidad objetivo)
+	public final void atacarA(Unidad objetivo)
 	{
 		if (puedoAtacar(objetivo))
 			atacar(objetivo);
@@ -104,10 +107,24 @@ public abstract class Unidad
 	
 	void dañar (Unidad objetivo)
 	{
-		if (this.daño > objetivo.defensa)
-			objetivo.salud -= (this.daño - objetivo.defensa);
-		
+		int dañoRecib = (objetivo.tieneEscudo()) ? (this.daño*objetivo.defensa/100) : this.daño;
+		if (objetivo.salud > dañoRecib) 	
+			objetivo.salud -= dañoRecib;
+		if (objetivo.salud <0)				// evita tener vida negativa
+			objetivo.salud =0;
+			
+		//se reduce la cantidad del ataque al 40%
 		// si el daño es igual o menor que la defensa directamente no hace nada
 		// el if está porque si pasa eso, va a quedar un núm negativo y le va a subir la vida al objetivo
+	}
+	
+	
+	private boolean tieneEscudo() {
+		for (Item itemEqui : objetos)		//comprobar si ya lo tenia equipado
+		{
+			if (itemEqui.getName() == "Escudo")
+				return true;
+		}
+		return false;
 	}
 }
