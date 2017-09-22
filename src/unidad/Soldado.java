@@ -38,7 +38,7 @@ public class Soldado extends Unidad implements BebenPoción
 //	}
 
 	@Override
-	boolean puedoAtacar(Unidad objetivo)
+	protected boolean puedoAtacar(Unidad objetivo)
 	{
 		if(estaEnRango(objetivo) && this.energia >= 10)
 		{

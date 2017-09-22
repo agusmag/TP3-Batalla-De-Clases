@@ -59,7 +59,7 @@ public class Arquero extends Unidad
 		return false;
 	}
 	
-	void recargarFlechas ()
+	public void recargarFlechas ()
 	{
 		this.flechas += 6;
 	}

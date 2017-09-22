@@ -2,8 +2,8 @@ package unidad;
 
 public class Lancero extends Unidad
 {
-	private final static double DISTANCIA_LANCERO_MIN = 1;
-	private final static double DISTANCIA_LANCERO_MAX = 3;
+	private final static int DISTANCIA_LANCERO_MIN = 1;
+	private final static int DISTANCIA_LANCERO_MAX = 3;
 
 	public Lancero ()
 	{

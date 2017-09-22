@@ -76,12 +76,12 @@ public abstract class Unidad
 		return this.salud <= 0;
 	}
 
-	protected void moverA(Vector2 pos)
+	public void moverA(Vector2 pos)
 	{
 		this.pos = pos;
 	}
 
-	boolean estaEnRango(Unidad objetivo)
+	protected boolean estaEnRango(Unidad objetivo)
 	{
 		double dist = this.pos.distancia(objetivo.pos);
 
@@ -104,7 +104,7 @@ public abstract class Unidad
 			this.dañar(objetivo);
 	}
 	
-	void dañar (Unidad objetivo)
+	private void dañar (Unidad objetivo)
 	{
 		int dañoRecib = (objetivo.tieneEscudo()) ? (this.daño*objetivo.defensa/100) : this.daño;
 		if (objetivo.salud >= dañoRecib) 	
