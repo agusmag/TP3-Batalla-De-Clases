@@ -1,5 +1,8 @@
 package unidad;
 
+/**
+ * Pocicion x,y de las unidades
+ */
 public class Vector2
 {
 	double x, y;

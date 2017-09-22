@@ -1,9 +1,9 @@
 package testBatallas;
 
 import org.junit.Test;
+
 import org.junit.Assert;
 
-import item.Item;
 import unidad.Arquero;
 import unidad.Caballero;
 import unidad.Lancero;
@@ -40,17 +40,15 @@ public class BatallasDePrueba
 	{
 		Arquero archer = new Arquero(new Vector2(2, 2));
 		Soldado soldier = new Soldado();
-		
-		for(int i = 0; i < 5; i++) {
+		for(int i = 0; i < 5; i++) 
+		{
 			soldier.atacarA(archer);
 			archer.mostrarStats();
-		
 		}
 		Assert.assertEquals(true, archer.muerta());
 		soldier.atacarA(archer);
-		//archer.mostrarStats();
 	}
-	
+
 	@Test
 	public void testFlechas ()
 	{
@@ -76,8 +74,6 @@ public class BatallasDePrueba
 		Assert.assertEquals(0, soldier.getEnergia());
 		Assert.assertEquals(100,  knight.getSalud());
 		
-		/*soldier.mostrarStats();
-		knight.mostrarStats();*/
 	}
 	
 	@Test
@@ -91,8 +87,7 @@ public class BatallasDePrueba
 		
 		Assert.assertEquals(50, soldier.getSalud());
 		
-		/*soldier.mostrarStats();
-		knight.mostrarStats();*/
+
 	}
 
 }

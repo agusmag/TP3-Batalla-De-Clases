@@ -1,5 +1,12 @@
 package unidad;
 
+
+/**
+ * Constructor de la unidad Lancero. 
+
+ * Unica limiación de ataque -DISTANCIA
+
+ */
 public class Lancero extends Unidad
 {
 	private final static int DISTANCIA_LANCERO_MIN = 1;
@@ -15,12 +22,7 @@ public class Lancero extends Unidad
 		super(150, 25, DISTANCIA_LANCERO_MIN, DISTANCIA_LANCERO_MAX, pos);
 	}
 
-//	@Override
-//	void atacar (Unidad objetivo)
-//	{
-//		dañar(objetivo);
-//	}
-	
+
 	@Override
 	boolean puedoAtacar (Unidad objetivo)
 	{

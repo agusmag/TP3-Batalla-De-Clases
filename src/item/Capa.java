@@ -1,5 +1,9 @@
 package item;
 
+/**
+ * Este item duplica la energia, pero reduce el daño 10%
+ */
+
 public class Capa extends Item {
 
 	public Capa(){

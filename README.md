@@ -4,8 +4,8 @@ TP3 - POO
 #2. Especificacion
 
 #2.1. Unidades
-  Los soldados pueden atacar cuerpo a cuerpo a otras unidades si tienen suficiente energ ́ıa. Cada
-ataque les consume 10 puntos de energ ́ıa, y comienzan con 100. Restauran energ ́ıa si reciben la
+  Los soldados pueden atacar cuerpo a cuerpo a otras unidades si tienen suficiente energia. Cada
+ataque les consume 10 puntos de energia, y comienzan con 100. Restauran energia si reciben la
 poci ́on de agua. Infringen un da ̃no de 10 puntos y comienzan con 200 de salud.
   Los arqueros pueden atacar a una distancia de entre 2 y 5 respecto de su enemigo, y si tienen
 suficientes flechas. Comienzan con 20 flechas en su carcaj, y pueden recargar si reciben un
@@ -21,9 +21,9 @@ luego de 3 ataques, y puede calmarse si recibe una poci ́on de agua.
 son excluyentes, seran:
 Un escudo, que aumenta la defensa ante ataques. Quien posea un escudo recibira solamente el
 40 % del valor del ataque.
-  Una capa, que duplica la energ ́ıa de la unidad. Sin embargo, reduce la fuerza de los ataques en
+  Una capa, que duplica la energia de la unidad. Sin embargo, reduce la fuerza de los ataques en
 un 10 % porque obstaculiza su movimiento.
-Un pu ̃nal, que aumenta la fuerza de los ataques en 3 puntos pero reduce la defensa tambi ́en en
+Un pu�al, que aumenta la fuerza de los ataques en 3 puntos pero reduce la defensa tambi�en en
 3 puntos por inutilizar la otra mano.
 
 #3. Sobre la resolucion

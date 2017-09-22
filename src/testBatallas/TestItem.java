@@ -28,6 +28,7 @@ public class TestItem {
 		legolas.equiparCon(puñalsito);
 		
 		Assert.assertEquals(8, legolas.getDaño());
+		legolas.mostrarStats();
 		Assert.assertEquals(-3, legolas.getDefensa());
 		
 	}

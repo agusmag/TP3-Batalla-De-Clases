@@ -1,5 +1,9 @@
 package item;
 
+
+/**
+ * Clase padre de los item
+ */
 public abstract class Item {
 	String tipo;
 
