@@ -1,7 +1,7 @@
 package item;
 
 /**
- * Aumenta 3 puntos de ataque, pero reduce 3 ps de defensa
+ * Aumenta en 3 los puntos de ataque, pero reduce en 3 los puntos de defensa.
  */
 
 public class Puñal extends Item {

@@ -1,12 +1,9 @@
 package unidad;
 
 /**
- * Constructor de la unidad Arquero.
  * 
- * 
- * Posee un numero limitado de ataques (flechas)
- * Al acabarse necesitara 
-
+ * Posee un numero limitado de ataques (flechas).
+ * Al acabarse, necesitará recargarlas.
  */
 
 public class Arquero extends Unidad
@@ -58,6 +55,9 @@ public class Arquero extends Unidad
 		return false;
 	}
 	
+	/**
+	 * Agrega 6 flechas al carcaj del arquero.
+	 */
 	public void recargarFlechas ()
 	{
 		this.flechas += 6;

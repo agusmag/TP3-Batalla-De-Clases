@@ -1,10 +1,9 @@
 package unidad;
 
 
-/**
- * Constructor de la unidad Lancero. 
+/** 
 
- * Unica limiación de ataque -DISTANCIA
+ * Única limiación de ataque -DISTANCIA
 
  */
 public class Lancero extends Unidad

@@ -36,16 +36,21 @@ public abstract class Unidad {
 		this.defensa = 0;
 	}
 
+	/*
+	 * Método de testeo.
+	 * Muestra los stats de la unidad.
+	 */
+	
 	public void mostrarStats() {
 		System.out.println("Daño: " + this.daño);
 		System.out.println("Salud: " + this.salud);
 		System.out.println("Defensa: " + this.defensa);
 	}
-/**
- * Equipamiento de item	, se impide que tenga dos item del mismo tipo
- * @param item 		tipo de item a aceptar[capa, puñal, escudo]
- * @return Retorna True si se logro equipar correctamente
- */
+	/**
+	 * Equipamiento de item, se impide que tenga dos item del mismo tipo
+	 * @param item 		tipo de item a aceptar[capa, puñal, escudo]
+	 * @return Retorna True si se logró equipar correctamente
+	 */
 	public boolean equiparCon(Item item) {
 		if (objetos.size() < 3) {
 			for (Item itemEqui : objetos) // comprobar si ya lo tenia equipado
@@ -61,7 +66,7 @@ public abstract class Unidad {
 	}
 
 	/**
-	 * Modifica el estado de la unidad dependiendo de los item que poseea
+	 * Modifica el estado de la unidad dependiendo de los item que posee.
 	 */
 	protected void actualizarStat(Item item) {
 		switch (item.getTipo()) {
@@ -80,30 +85,34 @@ public abstract class Unidad {
 	}
 
 	/**
-	 * Informa si la Unidad esta muerta.
-	 * @return Retorna TRUE si la unidad esta muerta
+	 * Informa si la unidad está muerta.
+	 * @return Retorna TRUE si la unidad está muerta
 	 */
 	public boolean muerta() {
 		return this.salud == 0;
 	}
 
+	/**
+	 * Mueve a la unidad a una determinada posición.
+	 * @param pos posición a la cual se moverá la unidad.
+	 */
 	public void moverA(Vector2 pos) {
 		this.pos = pos;
 	}
-/**
- * Se comprueba si esta dentro del alcance permitido para atacar
- */
+	/**
+	 * Se comprueba si está dentro del alcance permitido para atacar.
+	 */
 	protected boolean estaEnRango(Unidad objetivo) {
 		double dist = this.pos.distancia(objetivo.pos);
 		return dist >= distanciaAtaqueMin && dist <= distanciaAtaqueMax;
 	}
 
 	/**
-	 * Se evalua primero si puede realizar una ataque, si el enemigo no esta muerto
-	 * y que el enemigo no sea él mismo. Si todo lo anterior acurio procede a
-	 * realizar un ataque
+	 * Se evalua primero si puede realizar una ataque, si el enemigo no está muerto
+	 * y que el enemigo no sea él mismo. Si todo lo anterior se cumple procede a
+	 * realizar un ataque.
 	 * 
-	 * @param objetivo unidad que sera afectada por los ataques
+	 * @param objetivo unidad que será afectada por los ataques
 	 */
 	public final void atacarA(Unidad objetivo) {
 		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this))
@@ -126,7 +135,7 @@ public abstract class Unidad {
 
 	
 	/**
-	 * Coptrueba la exixtencia de un Item en concreto
+	 * Comprueba la exixtencia de un Item en concreto.
 	 * @param item
 	 * @return
 	 */
@@ -140,7 +149,7 @@ public abstract class Unidad {
 	}
 
 	// -----------------------------------------------------------------------------
-	// Metodos de uso secundario
+	// Métodos de uso secundario
 	// -----------------------------------------------------------------------------
 	public int getSalud() {
 		return salud;

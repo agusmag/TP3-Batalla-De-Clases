@@ -1,7 +1,7 @@
 package item;
 
 /**
- * La unidad que posea este item recibira solamente el 40 % del daño
+ * La unidad que posea este item recibirá solamente el 40 % del daño enemigo.
  */
 
 public class Escudo extends Item {

@@ -1,13 +1,10 @@
 package unidad;
 
 /**
- * Constructor de la unidad Caballero
-
  * 
- * Esta unidad no puede realizar mas de tres ataque seguidos
- * Necesita tomar pocion para volver a atacar
+ * Esta unidad no puede realizar más de tres ataque seguidos.
+ * Necesita tomar una poción de agua para volver a atacar.
  * 
-
  */
 public class Caballero extends Unidad implements BebenPoción {
 	private static final int DISTANCIA_CABALLERO_MIN = 1;
@@ -32,7 +29,6 @@ public class Caballero extends Unidad implements BebenPoción {
 	}
 
 	/**
-	 * (non-Javadoc)
 	 * 
 	 * @see unidad.Unidad#mostrarStats()
 	 */
@@ -46,7 +42,7 @@ public class Caballero extends Unidad implements BebenPoción {
 	}
 
 	/**
-	 * Reinicia el contador de ataques (non-Javadoc)
+	 * Reinicia el contador de ataques, por lo que el caballero puede volver a atacar.
 	 * 
 	 * @see unidad.BebenPoción#beberPoción()
 	 */

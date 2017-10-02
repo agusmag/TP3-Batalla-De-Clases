@@ -1,7 +1,7 @@
 package unidad;
 
 /**
- * Pocicion x,y de las unidades
+ * Pocicion x, y de las unidades
  */
 public class Vector2
 {
@@ -18,6 +18,10 @@ public class Vector2
 		this.x = x;
 		this.y = y;
 	}
+	
+	/**
+	 * Obtiene la distancia entre 2 posiciones.
+	 */
 	
 	public double distancia (Vector2 punto)
 	{

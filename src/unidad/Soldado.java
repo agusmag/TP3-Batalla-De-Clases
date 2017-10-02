@@ -1,10 +1,10 @@
 package unidad;
 
 /**
-*   Constructor de la unidad Soldado
+*
 * 
 * Limitación de ataque -ENERGIA. 
-* Realizar un ataque consume 10 ps de energia
+* Realizar un ataque consume 10 puntos de energia.
 
 */
 
