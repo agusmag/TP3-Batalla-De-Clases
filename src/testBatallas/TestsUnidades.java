@@ -9,17 +9,17 @@ import unidad.Caballero;
 import unidad.Lancero;
 import unidad.Soldado;
 import unidad.Unidad;
-import unidad.Vector2;
+import unidad.Punto;
 
-public class BatallasDePrueba
+public class TestsUnidades
 {
 	@Test
 	public void testDistancia()
 	{ // Este test comprueba que las diferentes clases esten bien instanciadas
 		// (Se comprueba Herencia).
-		Unidad soldier = new Soldado(new Vector2(1, 2));
-		Unidad archer = new Arquero(new Vector2(4, 2));
-		Unidad lancer = new Lancero(new Vector2(1, 1));
+		Unidad soldier = new Soldado(new Punto(1, 2));
+		Unidad archer = new Arquero(new Punto(4, 2));
+		Unidad lancer = new Lancero(new Punto(1, 1));
 		Unidad knight = new Caballero();
 
 		archer.atacarA(soldier);
@@ -38,7 +38,7 @@ public class BatallasDePrueba
 	@Test
 	public void testMuerte ()
 	{
-		Arquero archer = new Arquero(new Vector2(2, 2));
+		Arquero archer = new Arquero(new Punto(2, 2));
 		Soldado soldier = new Soldado();
 		for(int i = 0; i < 5; i++) 
 		{
@@ -52,7 +52,7 @@ public class BatallasDePrueba
 	@Test
 	public void testFlechas ()
 	{
-		Arquero archer = new Arquero(new Vector2(2, 2));
+		Arquero archer = new Arquero(new Punto(2, 2));
 		Soldado soldier = new Soldado();
 		
 		for(int i = 0; i < 21; i++)
@@ -65,7 +65,7 @@ public class BatallasDePrueba
 	@Test
 	public void testEnergia ()
 	{
-		Caballero knight = new Caballero(new Vector2(0, 1));
+		Caballero knight = new Caballero(new Punto(0, 1));
 		Soldado soldier = new Soldado();
 		
 		for(int i = 0; i < 11; i++)
@@ -79,7 +79,7 @@ public class BatallasDePrueba
 	@Test
 	public void testCaballo ()
 	{
-		Caballero knight = new Caballero(new Vector2(0, 1));
+		Caballero knight = new Caballero(new Punto(0, 1));
 		Soldado soldier = new Soldado();
 		
 		for(int i = 0; i < 4; i++)

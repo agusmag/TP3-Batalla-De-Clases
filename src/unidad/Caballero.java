@@ -12,15 +12,15 @@ public class Caballero extends Unidad implements BebenPoción {
 	int contadorAtaques;
 
 	public Caballero() {
-		super(200, 50, DISTANCIA_CABALLERO_MIN, DISTANCIA_CABALLERO_MAX, new Vector2());
+		super(200, 50, DISTANCIA_CABALLERO_MIN, DISTANCIA_CABALLERO_MAX, new Punto());
 	}
 
-	public Caballero(Vector2 pos) {
+	public Caballero(Punto pos) {
 		super(200, 50, DISTANCIA_CABALLERO_MIN, DISTANCIA_CABALLERO_MAX, pos);
 	}
 
 	@Override
-	boolean puedoAtacar(Unidad objetivo) {
+	public boolean puedoAtacar(Unidad objetivo) {
 		if (estaEnRango(objetivo) && contadorAtaques < 3) {
 			contadorAtaques++;
 			return true;

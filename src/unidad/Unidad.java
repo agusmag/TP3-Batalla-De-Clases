@@ -8,14 +8,23 @@ import item.Item;
 *CLASE PADRE DE LAS UNIDADES
 *
 */
-public abstract class Unidad {
-	int salud, daño, defensa, energia;
+public abstract class Unidad
+{
+	int salud, daño, defensa, energia, itemsEquipados;
 	int distanciaAtaqueMax, distanciaAtaqueMin;
-	Vector2 pos;
+	Punto pos;
 	protected List<Item> objetos;
 
-	abstract boolean puedoAtacar(Unidad objetivo);
+	public abstract boolean puedoAtacar(Unidad objetivo);
 
+	/**
+	 * Constructor vacío para poder usar Decorator con los items.
+	 */
+	protected Unidad()
+	{
+		
+	}
+	
 	/**
 	 * Constructos de unidades
 	 * Todas las unidades comienzan con defensa 0
@@ -26,7 +35,8 @@ public abstract class Unidad {
 	 * @param distanciaAtaqueMax distancia de ataque efectivo maximo
 	 * @param pos posicion del la unidad [x,y]
 	 */
-	public Unidad(int salud, int daño, int distanciaAtaqueMin, int distanciaAtaqueMax, Vector2 pos) {
+	public Unidad(int salud, int daño, int distanciaAtaqueMin, int distanciaAtaqueMax, Punto pos) 
+	{
 		objetos = new ArrayList<Item>();
 		this.salud = salud;
 		this.daño = daño;
@@ -41,47 +51,11 @@ public abstract class Unidad {
 	 * Muestra los stats de la unidad.
 	 */
 	
-	public void mostrarStats() {
-		System.out.println("Daño: " + this.daño);
-		System.out.println("Salud: " + this.salud);
-		System.out.println("Defensa: " + this.defensa);
-	}
-	/**
-	 * Equipamiento de item, se impide que tenga dos item del mismo tipo
-	 * @param item 		tipo de item a aceptar[capa, puñal, escudo]
-	 * @return Retorna True si se logró equipar correctamente
-	 */
-	public boolean equiparCon(Item item) {
-		if (objetos.size() < 3) {
-			for (Item itemEqui : objetos) // comprobar si ya lo tenia equipado
-			{
-				if (itemEqui.getTipo() == item.getTipo())
-					return false;
-			}
-			objetos.add(item);
-			actualizarStat(item);
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Modifica el estado de la unidad dependiendo de los item que posee.
-	 */
-	protected void actualizarStat(Item item) {
-		switch (item.getTipo()) {
-		case "Capa":
-			this.energia *= 2;
-			this.daño *= 0.9;
-			break;
-		case "Puñal":
-			this.defensa -= 3;
-			this.daño += 3;
-			break;
-		case "escudo":
-			this.defensa = 40;
-			break;
-		}
+	public void mostrarStats() 
+	{
+		System.out.println("Daño: " + this.getDaño());
+		System.out.println("Salud: " + this.getSalud());
+		System.out.println("Defensa: " + this.getDefensa());
 	}
 
 	/**
@@ -96,9 +70,10 @@ public abstract class Unidad {
 	 * Mueve a la unidad a una determinada posición.
 	 * @param pos posición a la cual se moverá la unidad.
 	 */
-	public void moverA(Vector2 pos) {
+	public void moverA(Punto pos) {
 		this.pos = pos;
 	}
+	
 	/**
 	 * Se comprueba si está dentro del alcance permitido para atacar.
 	 */
@@ -120,32 +95,28 @@ public abstract class Unidad {
 	}
 
 	/**
-	 * Ejecuta el artaque, reduce el ataque en 40% si el enemigo posee escudo
-	 * Se evita tambien tener vida negativa
+	 * Ejecuta el ataque, llamando al método serDañado del objetivo
 	 * @param objetivo
 	 */
-	private void dañar(Unidad objetivo) {
-		int dañoRecib = (objetivo.tieneItem( "Escudo")) ? (this.daño * objetivo.defensa / 100) : this.daño;
-		if (objetivo.tieneItem( "Puñal"))
-			dañoRecib += 3;
-		objetivo.salud -= dañoRecib;
-		if (objetivo.salud < 0) 
-			objetivo.salud = 0;
+	private void dañar(Unidad objetivo) 
+	{
+		objetivo.serDañado(this.getDaño());
 	}
 
+	private void serDañado(int dañoRecibido)
+	{
+		int dañoFinal = dañoRecibido <= this.getDefensa() ? 0 : dañoRecibido - this.getDefensa();
+		this.setSalud(this.getSalud() - dañoFinal);
+	}
 	
 	/**
 	 * Comprueba la exixtencia de un Item en concreto.
-	 * @param item
-	 * @return
+	 * @param idItem número de id del item
+	 * @return true si tiene el item equipado
 	 */
-	private boolean tieneItem(String item) {
-		for (Item itemEqui : objetos) 
-		{
-			if (itemEqui.getTipo() == item)
-				return true;
-		}
-		return false;
+	public boolean tieneItem(int idItem) 
+	{
+		return (this.getItemsEquipados() & idItem) != 0;
 	}
 
 	// -----------------------------------------------------------------------------
@@ -155,8 +126,13 @@ public abstract class Unidad {
 		return salud;
 	}
 
+	/**
+	 * Cambia la salud de la Unidad. De ser negativa le asigna un 0.
+	 * @param salud número de salud a asignarle a la unidad
+	 */
+	
 	public void setSalud(int salud) {
-		this.salud = salud;
+		this.salud = salud < 0 ? 0 : salud;
 	}
 
 	public int getDefensa() {
@@ -175,15 +151,20 @@ public abstract class Unidad {
 		this.energia = energia;
 	}
 
-	public void setPos(Vector2 pos) {
+	public void setPos(Punto pos) {
 		this.pos = pos;
 	}
 
-	protected Vector2 getPos() {
+	public Punto getPos() {
 		return this.pos;
 	}
 
 	public int getDaño() {
 		return this.daño;
+	}
+	
+	public int getItemsEquipados()
+	{
+		return this.itemsEquipados;
 	}
 }

@@ -14,11 +14,11 @@ public class Arquero extends Unidad
 
 	public Arquero()
 	{
-		super(50, 5, DISTANCIA_ARQUERO_MIN, DISTANCIA_ARQUERO_MAX, new Vector2());
+		super(50, 5, DISTANCIA_ARQUERO_MIN, DISTANCIA_ARQUERO_MAX, new Punto());
 		this.flechas = 20;
 	}
 	
-	public Arquero(Vector2 pos)
+	public Arquero(Punto pos)
 	{
 		super(50, 5, DISTANCIA_ARQUERO_MIN, DISTANCIA_ARQUERO_MAX, pos);
 		this.flechas = 20;
@@ -46,7 +46,7 @@ public class Arquero extends Unidad
 	
 
 	@Override
-	boolean puedoAtacar (Unidad objetivo)
+	public boolean puedoAtacar (Unidad objetivo)
 	{
 		if(estaEnRango(objetivo) && this.flechas > 0){
 			this.flechas --;

@@ -10,11 +10,11 @@ package unidad;
 
 public class Soldado extends Unidad implements BebenPoción {
 	public Soldado() {
-		super(200, 10, 0, 1, new Vector2());
+		super(200, 10, 0, 1, new Punto());
 		this.energia = 100;
 	}
 
-	public Soldado(Vector2 pos) {
+	public Soldado(Punto pos) {
 		super(200, 10, 0, 1, pos);
 		this.energia = 100;
 	}
@@ -34,7 +34,7 @@ public class Soldado extends Unidad implements BebenPoción {
 	}
 
 	@Override
-	protected boolean puedoAtacar(Unidad objetivo) {
+	public boolean puedoAtacar(Unidad objetivo) {
 		if (estaEnRango(objetivo) && this.energia >= 10) {
 			this.energia -= 10;
 			return true;

@@ -13,17 +13,17 @@ public class Lancero extends Unidad
 
 	public Lancero ()
 	{
-		super(150, 25, DISTANCIA_LANCERO_MIN, DISTANCIA_LANCERO_MAX, new Vector2());
+		super(150, 25, DISTANCIA_LANCERO_MIN, DISTANCIA_LANCERO_MAX, new Punto());
 	}
 	
-	public Lancero (Vector2 pos)
+	public Lancero (Punto pos)
 	{
 		super(150, 25, DISTANCIA_LANCERO_MIN, DISTANCIA_LANCERO_MAX, pos);
 	}
 
 
 	@Override
-	boolean puedoAtacar (Unidad objetivo)
+	public boolean puedoAtacar (Unidad objetivo)
 	{
 		return estaEnRango(objetivo);
 	}
