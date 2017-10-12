@@ -2,6 +2,8 @@ package testBatallas;
 
 import org.junit.Test;
 
+import item.Escudo;
+
 import org.junit.Assert;
 
 import unidad.Arquero;
@@ -43,7 +45,7 @@ public class TestsUnidades
 		for(int i = 0; i < 5; i++) 
 		{
 			soldier.atacarA(archer);
-			archer.mostrarStats();
+			//archer.mostrarStats();
 		}
 		Assert.assertEquals(true, archer.muerta());
 		soldier.atacarA(archer);
@@ -87,7 +89,23 @@ public class TestsUnidades
 		
 		Assert.assertEquals(50, soldier.getSalud());
 		
-
 	}
+	
+	
+	@Test
+	public void testAtaqueConEscudo ()throws Exception
+	{
+		Caballero knight = new Caballero(new Punto(0, 1));	//ataque de 50 ps
+
+		Unidad soldier = new Soldado();
+		//soldier = new Escudo(soldier);
+		Assert.assertEquals(0, soldier.getDefensa());
+		soldier.mostrarStats();
+		knight.atacarA(soldier);		//daño recibido 20 (40%)
+		
+		Assert.assertEquals(180, soldier.getSalud());
+		
+	}
+	
 
 }

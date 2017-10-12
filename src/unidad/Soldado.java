@@ -2,21 +2,25 @@ package unidad;
 
 /**
 *
-* 
 * Limitación de ataque -ENERGIA. 
 * Realizar un ataque consume 10 puntos de energia.
-
 */
 
 public class Soldado extends Unidad implements BebenPoción {
+	private final static int DISTANCIA_LANCERO_MIN = 0;
+	private final static int DISTANCIA_LANCERO_MAX = 1;
+	private static final int SALUD= 200;
+	private static final int DAÑO=10;
+	private static final int ENERGIAMAX=100;
+	
 	public Soldado() {
-		super(200, 10, 0, 1, new Punto());
-		this.energia = 100;
+		super(SALUD, DAÑO, DISTANCIA_LANCERO_MIN, DISTANCIA_LANCERO_MAX, new Punto());
+		this.energia = ENERGIAMAX;
 	}
 
 	public Soldado(Punto pos) {
-		super(200, 10, 0, 1, pos);
-		this.energia = 100;
+		super(SALUD, DAÑO, DISTANCIA_LANCERO_MIN, DISTANCIA_LANCERO_MAX, pos);
+		this.energia = ENERGIAMAX;
 	}
 
 	@Override
@@ -30,7 +34,7 @@ public class Soldado extends Unidad implements BebenPoción {
 
 	@Override
 	public void beberPoción() {
-		this.energia = 100;
+		this.energia = ENERGIAMAX;
 	}
 
 	@Override

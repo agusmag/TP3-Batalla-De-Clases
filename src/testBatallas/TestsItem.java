@@ -28,4 +28,53 @@ public class TestsItem {
 		
 	}
 	
+	@Test
+	public void equiparPuñalyCapa() throws Exception
+	{
+		Unidad legolas = new Arquero();
+		legolas = new Puñal(legolas);
+		legolas = new Capa(legolas);
+		
+		Assert.assertEquals(7, legolas.getDaño());
+		legolas.mostrarStats();
+		Assert.assertEquals(0, legolas.getDefensa());
+		
+	}
+	
+	@Test
+	public void equiparPuñal_Capa_Escudo() throws Exception
+	{
+		Unidad legolas = new Arquero();
+		legolas = new Puñal(legolas);
+		legolas = new Capa(legolas);
+		legolas = new Escudo(legolas);
+		
+		Assert.assertEquals(7, legolas.getDaño());
+		legolas.mostrarStats();
+		Assert.assertEquals(0, legolas.getDefensa());
+		
+	}
+	
+	@Test
+	public void equiparCaballero() throws Exception
+	{
+		Unidad aragorn = new Caballero();
+		aragorn = new Puñal(aragorn);
+		Assert.assertEquals(53, aragorn.getDaño());
+		
+		aragorn = new Capa(aragorn);
+		Assert.assertEquals(47, aragorn.getDaño());
+		
+		//aragorn.mostrarStats();
+	}
+	
+	@Test
+	public void equiparSoldado() throws Exception
+	{
+		Unidad leonidas = new Soldado();
+		leonidas = new Puñal(leonidas);		
+		Assert.assertEquals(13, leonidas.getDaño());
+
+		
+	}
 }

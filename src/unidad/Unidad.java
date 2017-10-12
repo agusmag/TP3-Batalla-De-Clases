@@ -33,7 +33,7 @@ public abstract class Unidad
 	 * @param daño Daño que puede efectuar
 	 * @param distanciaAtaqueMin distancia de ataque efectivo minimo
 	 * @param distanciaAtaqueMax distancia de ataque efectivo maximo
-	 * @param pos posicion del la unidad [x,y]
+	 * @param pos posición del la unidad [x,y]
 	 */
 	public Unidad(int salud, int daño, int distanciaAtaqueMin, int distanciaAtaqueMax, Punto pos) 
 	{
@@ -90,8 +90,10 @@ public abstract class Unidad
 	 * @param objetivo unidad que será afectada por los ataques
 	 */
 	public final void atacarA(Unidad objetivo) {
-		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this))
+		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this) && this.muerta()==false)
 			this.dañar(objetivo);
+		//else 
+			//System.out.println("Esta MUERTO");
 	}
 
 	/**
@@ -100,14 +102,14 @@ public abstract class Unidad
 	 */
 	private void dañar(Unidad objetivo) 
 	{
-		objetivo.serDañado(this.getDaño());
+		int nivelDaño =this.getDaño();
+		int dañoFinal = nivelDaño <= objetivo.getDefensa() ? 0 : nivelDaño - objetivo.getDefensa();
+		if( true/*objetivo.tieneItem(2)*/) // COMO COMPRUEBO QUE TIENE ESCUDO
+			dañoFinal*=0.4;
+		objetivo.setSalud(objetivo.getSalud() - dañoFinal);
 	}
 
-	private void serDañado(int dañoRecibido)
-	{
-		int dañoFinal = dañoRecibido <= this.getDefensa() ? 0 : dañoRecibido - this.getDefensa();
-		this.setSalud(this.getSalud() - dañoFinal);
-	}
+	
 	
 	/**
 	 * Comprueba la exixtencia de un Item en concreto.

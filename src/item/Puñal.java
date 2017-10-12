@@ -5,7 +5,6 @@ import unidad.Unidad;
 /**
  * Aumenta en 3 los puntos de ataque, pero reduce en 3 los puntos de defensa.
  */
-
 public class Puñal extends Item 
 {
 	private static final int ID_ITEM_PUÑAL = 1;

@@ -5,7 +5,6 @@ import unidad.Unidad;
 /**
  * Este item duplica la energía, pero reduce el daño 10%
  */
-
 public class Capa extends Item 
 {
 
