@@ -7,8 +7,7 @@ import unidad.Unidad;
  */
 public class Capa extends Item 
 {
-
-private static final int ID_ITEM_CAPA = 4;
+	private static final int ID_ITEM_CAPA = 4;
 	
 	public Capa(Unidad unidad) throws Exception 
 	{
@@ -16,7 +15,7 @@ private static final int ID_ITEM_CAPA = 4;
 		
 		// verifico que no tenga equipado el mismo item
 		if ((unidad.getItemsEquipados() & ID_ITEM_CAPA) != 0)
-			throw new Exception("Ya tiene un puñal equipado!");
+			throw new Exception("Ya tiene una capa equipado!");
 		
 		// duplica la energía al equiparse
 		unidad.setEnergia(unidad.getEnergia() * 2);

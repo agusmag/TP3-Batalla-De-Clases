@@ -16,14 +16,16 @@ public class Escudo extends Item
 		
 		// verifico que no tenga equipado el mismo item
 		if ((unidad.getItemsEquipados() & ID_ITEM_ESCUDO) != 0)
-			throw new Exception("Ya tiene un puñal equipado!");
+			throw new Exception("Ya tiene un escudo equipado!");
 	}
 
 	@Override
-	public int getDefensa ()
+	public void serDañado(int dañoRecibido)
 	{
-		// trunca la defensa luego de multiplicarla si quedó con decimales
-		return (int) (this.unidad.getDefensa() * 1.4);
+		int dañoFinal = dañoRecibido <= this.getDefensa() ? 0 : dañoRecibido - this.getDefensa();
+		dañoFinal = (int) (dañoFinal * 0.4);
+		
+		this.setSalud(this.getSalud() - dañoFinal);
 	}
 	
 	@Override

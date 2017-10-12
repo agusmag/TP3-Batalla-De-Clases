@@ -4,16 +4,21 @@ import unidad.Punto;
 import unidad.Unidad;
 
 /**
- * Clase padre de los item
+ * Clase padre de los items. 
+ * Todos los métodos tienen complejidad computacional O(1).
  */
 public abstract class Item extends Unidad
 {
 	protected Unidad unidad;
-	
-	String tipo;
 
+	/**
+	 * Descripción del item.
+	 */
 	abstract void descripcion();
 	
+	/**
+	 * Constructor que necesita la referencia de la unidad a la que se le equipará el item.
+	 */
 	public Item (Unidad unidad)
 	{
 		this.unidad = unidad;
@@ -23,56 +28,83 @@ public abstract class Item extends Unidad
 	{
 		return this.unidad.puedoAtacar(objetivo);
 	}
-	/*public String getTipo() 
+	
+	public boolean muerta ()
 	{
-		return this.tipo;
+		return this.unidad.muerta();
 	}
-
-	public void setTipo(String tipo) 
-	{
-		this.tipo = tipo;
-	}*/
-
+	
+	/**
+	 * Retorna la salud de la unidad que tiene equipado este item.
+	 */
 	public int getSalud() 
 	{
 		return this.unidad.getSalud();
 	}
 	
+	/**
+	 * Cambia la salud de la unidad que tiene equipado este item.
+	 * @param salud número de salud a asignarle a la unidad
+	 */
 	public void setSalud(int salud) 
 	{
 		this.unidad.setSalud(salud);
 	}
 
+	/**
+	 * Retorna la defensa de la unidad que tiene equipado este item.
+	 */
 	public int getDefensa() 
 	{
 		return this.unidad.getDefensa();
 	}
 
+	/**
+	 * Cambia la defensa de la unidad que tiene equipado este item.
+	 * @param defensa número de defensa a asignarle a la unidad
+	 */
 	public void setDefensa(int defensa) 
 	{
 		this.unidad.setDefensa(defensa);;
 	}
 
+	/**
+	 * Retorna la energía de la unidad que tiene equipado este item.
+	 */
 	public int getEnergia() 
 	{
 		return this.unidad.getEnergia();
 	}
 
+	/**
+	 * Cambia la energía de la unidad que tiene equipado este item.
+	 * @param energía número de energía a asignarle a la unidad
+	 */
 	public void setEnergia(int energia) 
 	{
 		this.unidad.setEnergia(energia);;
 	}
 
-	public void setPos(Punto pos) 
-	{
-		this.unidad.setPos(pos);;
-	}
-
+	/**
+	 * Retorna la posición de la unidad que tiene equipado este item.
+	 */
 	public Punto getPos() 
 	{
 		return this.unidad.getPos();
 	}
+	
+	/**
+	 * Cambia la posición de la unidad que tiene equipado este item.
+	 * @param posición Punto de la posición a la que se moverá la unidad
+	 */
+	public void moverA(Punto pos) 
+	{
+		this.unidad.moverA(pos);;
+	}
 
+	/**
+	 * Retorna el daño de la unidad que tiene equipado este item.
+	 */
 	public int getDaño() 
 	{
 		return this.unidad.getDaño();

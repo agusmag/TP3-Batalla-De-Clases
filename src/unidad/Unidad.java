@@ -5,8 +5,8 @@ import java.util.List;
 import item.Item;
 
 /**
-*CLASE PADRE DE LAS UNIDADES
-*
+* CLASE PADRE DE LAS UNIDADES
+* Todos los métodos tienen complejidad computacional O(1).
 */
 public abstract class Unidad
 {
@@ -65,14 +65,6 @@ public abstract class Unidad
 	public boolean muerta() {
 		return this.salud == 0;
 	}
-
-	/**
-	 * Mueve a la unidad a una determinada posición.
-	 * @param pos posición a la cual se moverá la unidad.
-	 */
-	public void moverA(Punto pos) {
-		this.pos = pos;
-	}
 	
 	/**
 	 * Se comprueba si está dentro del alcance permitido para atacar.
@@ -89,27 +81,28 @@ public abstract class Unidad
 	 * 
 	 * @param objetivo unidad que será afectada por los ataques
 	 */
-	public final void atacarA(Unidad objetivo) {
-		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this) && this.muerta()==false)
+	public void atacarA(Unidad objetivo) {
+		
+		if (puedoAtacar(objetivo) && objetivo.muerta() == false && !objetivo.equals(this) && this.muerta() == false)
 			this.dañar(objetivo);
-		//else 
-			//System.out.println("Esta MUERTO");
+		/*else 
+			System.out.println("Esta MUERTO");*/
 	}
 
 	/**
 	 * Ejecuta el ataque, llamando al método serDañado del objetivo
 	 * @param objetivo
 	 */
-	private void dañar(Unidad objetivo) 
+	public void dañar(Unidad objetivo) 
 	{
-		int nivelDaño =this.getDaño();
-		int dañoFinal = nivelDaño <= objetivo.getDefensa() ? 0 : nivelDaño - objetivo.getDefensa();
-		if( true/*objetivo.tieneItem(2)*/) // COMO COMPRUEBO QUE TIENE ESCUDO
-			dañoFinal*=0.4;
-		objetivo.setSalud(objetivo.getSalud() - dañoFinal);
+		objetivo.serDañado(this.getDaño());
 	}
-
 	
+	public void serDañado(int dañoRecibido)
+	{
+		int dañoFinal = dañoRecibido <= this.getDefensa() ? 0 : dañoRecibido - this.getDefensa();
+		this.setSalud(this.getSalud() - dañoFinal);
+	}
 	
 	/**
 	 * Comprueba la exixtencia de un Item en concreto.
@@ -121,50 +114,76 @@ public abstract class Unidad
 		return (this.getItemsEquipados() & idItem) != 0;
 	}
 
-	// -----------------------------------------------------------------------------
-	// Métodos de uso secundario
-	// -----------------------------------------------------------------------------
+	/**
+	 * Retorna la salud de la unidad.
+	 */
 	public int getSalud() {
 		return salud;
 	}
 
 	/**
-	 * Cambia la salud de la Unidad. De ser negativa le asigna un 0.
+	 * Cambia la salud de la unidad. De ser negativa le asigna un 0.
 	 * @param salud número de salud a asignarle a la unidad
 	 */
-	
 	public void setSalud(int salud) {
 		this.salud = salud < 0 ? 0 : salud;
 	}
 
+	/**
+	 * Retorna la defensa de la unidad.
+	 */
 	public int getDefensa() {
 		return defensa;
 	}
 
+	/**
+	 * Cambia la defensa de la unidad.
+	 * @param defensa número de defensa a asignarle a la unidad
+	 */
 	public void setDefensa(int defensa) {
 		this.defensa = defensa;
 	}
 
+	/**
+	 * Retorna la energía de la unidad.
+	 */
 	public int getEnergia() {
 		return energia;
 	}
 
+	/**
+	 * Cambia la energía de la unidad.
+	 * @param energía número de energía a asignarle a la unidad
+	 */
 	public void setEnergia(int energia) {
 		this.energia = energia;
 	}
 
-	public void setPos(Punto pos) {
-		this.pos = pos;
-	}
-
+	/**
+	 * Retorna la posición de la unidad.
+	 */
 	public Punto getPos() {
 		return this.pos;
 	}
 
+	/**
+	 * Mueve a la unidad a una determinada posición.
+	 * @param pos posición a la cual se moverá la unidad.
+	 */
+	public void moverA(Punto pos) {
+		this.pos = pos;
+	}
+	
+	/**
+	 * Retorna el daño de la unidad.
+	 */
 	public int getDaño() {
 		return this.daño;
 	}
 	
+	/**
+	 * Retorna el número lógico que representa los items equipados.
+	 */
 	public int getItemsEquipados()
 	{
 		return this.itemsEquipados;

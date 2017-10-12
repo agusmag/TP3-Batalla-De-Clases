@@ -91,21 +91,5 @@ public class TestsUnidades
 		
 	}
 	
-	
-	@Test
-	public void testAtaqueConEscudo ()throws Exception
-	{
-		Caballero knight = new Caballero(new Punto(0, 1));	//ataque de 50 ps
-
-		Unidad soldier = new Soldado();
-		//soldier = new Escudo(soldier);
-		Assert.assertEquals(0, soldier.getDefensa());
-		soldier.mostrarStats();
-		knight.atacarA(soldier);		//daño recibido 20 (40%)
-		
-		Assert.assertEquals(180, soldier.getSalud());
-		
-	}
-	
 
 }

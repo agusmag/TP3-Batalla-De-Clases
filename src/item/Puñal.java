@@ -17,7 +17,7 @@ public class Puñal extends Item
 		if ((unidad.getItemsEquipados() & ID_ITEM_PUÑAL) != 0)
 			throw new Exception("Ya tiene un puñal equipado!");
 	}
-
+	
 	@Override
 	public int getDaño ()
 	{
@@ -27,7 +27,7 @@ public class Puñal extends Item
 	@Override
 	public int getDefensa ()
 	{
-		return this.unidad.getDefensa() <= 3 ? 0 : this.unidad.getDefensa() - 3;
+		return this.unidad.getDefensa() - 3;
 	}
 	
 	@Override
