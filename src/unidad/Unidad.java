@@ -188,4 +188,12 @@ public abstract class Unidad
 	{
 		return this.itemsEquipados;
 	}
+	
+	/**
+	 * Métodos que serán sobreescritos por las subclases
+	 */
+	
+	public void recargarFlechas () {}
+	public int getFlechas () {return 0;}
+	public void setFlechas (int flechas) {}
 }

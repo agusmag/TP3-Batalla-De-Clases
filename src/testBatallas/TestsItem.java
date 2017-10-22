@@ -120,6 +120,22 @@ public class TestsItem
 	{
 		Unidad leonidas = new Soldado();
 		leonidas = new Puñal(leonidas);		
+		
 		Assert.assertEquals(13, leonidas.getDaño());
+	}
+
+	@Test
+	public void equiparArquero() throws Exception
+	{
+		Unidad legolas = new Arquero();
+		legolas = new Puñal(legolas);
+		legolas = new Escudo(legolas);
+		legolas = new Capa(legolas);
+		
+		Assert.assertEquals(20, legolas.getFlechas());
+		legolas.setFlechas(0);
+		Assert.assertEquals(0, legolas.getFlechas());
+		legolas.recargarFlechas();
+		Assert.assertEquals(6, legolas.getFlechas());
 	}
 }

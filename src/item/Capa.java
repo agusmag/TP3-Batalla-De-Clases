@@ -38,5 +38,23 @@ public class Capa extends Item
 	public void descripcion(){
 		System.out.println("Energia x 2 \n -10% Daño");
 	}
+	
+	@Override
+	public void recargarFlechas () 
+	{
+		this.unidad.recargarFlechas();
+	}
+	
+	@Override
+	public int getFlechas () 
+	{
+		return this.unidad.getFlechas();
+	}
+	
+	@Override
+	public void setFlechas (int flechas) 
+	{
+		this.unidad.setFlechas(flechas);
+	}
 
 }

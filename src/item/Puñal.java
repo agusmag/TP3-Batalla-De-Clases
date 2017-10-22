@@ -40,5 +40,23 @@ public class Puñal extends Item
 	public void descripcion() {
 		System.out.println("+3 Daño \n -3 Defensa");
 	}
+	
+	@Override
+	public void recargarFlechas () 
+	{
+		this.unidad.recargarFlechas();
+	}
+	
+	@Override
+	public int getFlechas () 
+	{
+		return this.unidad.getFlechas();
+	}
+	
+	@Override
+	public void setFlechas (int flechas) 
+	{
+		this.unidad.setFlechas(flechas);
+	}
 
 }
